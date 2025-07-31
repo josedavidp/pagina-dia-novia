@@ -5,6 +5,14 @@ import random
 # Configuración general
 st.set_page_config(page_title="Feliz Día, Amor ❤️", layout="centered")
 
+# Música de fondo sincronizada con el video (HTML + JS)
+st.markdown("""
+<!-- 🎵 Música de fondo -->
+<audio id="bg-music" autoplay loop>
+  <source src="https://dl.dropboxusercontent.com/scl/fi/8lglshdnyxx60f1buxsh1/Coldplay-Yellow.mp3?rlkey=s1l0yk5vw7x7r77wj3icdp8eh" type="audio/mp3">
+</audio>
+""", unsafe_allow_html=True)
+
 # Título y presentación
 st.title("💖 ¡Feliz Día de la Novia! 💖")
 st.markdown("## Para la persona más especial del mundo 🌹")
@@ -24,7 +32,6 @@ Gracias por estar a mi lado, por ser mi compañera, mi mejor amiga y mi motor de
 
 # Galería
 st.markdown("### 🖼️ Algunos Momentos Juntos")
-
 cols = st.columns(3)
 images = ["imagenes/2021.jpg", "imagenes/Cuenca.jpg", "imagenes/Halloween.jpg"]
 for i, img in enumerate(images):
@@ -61,18 +68,34 @@ if st.button("Haz clic para ver algo lindo 💌"):
     <div class="hearts">💖 💕 ❤️ 💓 💘</div>
     """, unsafe_allow_html=True)
 
-    # 🎬 Video con tamaño reducido (manual)
-    st.markdown("### 🎥 Mira este video:")
-    st.video("https://dl.dropboxusercontent.com/scl/fi/vifrooo73c7u835lzytuy/Video1.MP4?rlkey=is6ksbezod2mqknxhgzpn5dm7")
-    
-    # Si vas a desplegar en Streamlit Cloud, reemplaza esta línea por:
-    # st.video("https://dl.dropboxusercontent.com/s/abc123xyz/mi_video.mp4")
-    
-    # 🎉 Animación adicional con globos
+    # 🎬 Video con control sobre la música
+    st.markdown("""
+    ### 🎥 Mira este video:
+    <video width="400" controls id="video1">
+      <source src="https://dl.dropboxusercontent.com/scl/fi/vifrooo73c7u835lzytuy/Video1.MP4?rlkey=is6ksbezod2mqknxhgzpn5dm7" type="video/mp4">
+      Tu navegador no soporta video HTML.
+    </video>
+
+    <script>
+      const music = document.getElementById("bg-music");
+      const video = document.getElementById("video1");
+
+      music.volume = 0.2;  // Volumen bajo
+
+      video.addEventListener('play', function () {
+        music.pause();
+      });
+
+      video.addEventListener('pause', function () {
+        music.play();
+      });
+    </script>
+    """, unsafe_allow_html=True)
+
     st.balloons()
 
+# Quiz de recuerdos
 st.markdown("### 🧠 ¿Cuánto recuerdas de nosotros?")
-
 p1 = st.radio("¿Dónde fue nuestra primera salida?", ["Parque", "Cine", "Comida Fit", "Tu casa"])
 p2 = st.radio("¿Cuál es mi apodo para ti?", ["Karen", "Monse", "Mi niña", "Osita"])
 p3 = st.radio("¿Qué día comenzamos nuestra relación?", ["14 de febrero", "21 de junio", "18 de diciembre", "5 de mayo"])
@@ -85,13 +108,11 @@ if st.button("Verificar mis respuestas ❤️"):
 
 # Mensaje Oculto
 st.markdown("### 🔐 Mensaje Secreto")
-
 clave = st.text_input("Escribe la palabra mágica para desbloquear algo especial...")
 
 if clave.lower() == "ratoncita":
     st.success("💖 Este amor que siento por ti no tiene límites. Gracias por existir.")
     st.image("imagenes/Sorpresa.jpg", width=300)
-
 
 # Footer
 st.markdown("---")
