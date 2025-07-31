@@ -63,7 +63,7 @@ if st.button("Haz clic para ver algo lindo 💌"):
 
     # 🎬 Video con tamaño reducido (manual)
     st.markdown("### 🎥 Mira este video:")
-    st.video("https://drive.google.com/uc?export=download&id=1cmqTdsNer43w_pBKTaiH9Xij5sfjWu4T")
+    st.video("https://dl.dropboxusercontent.com/scl/fi/vifrooo73c7u835lzytuy/Video1.MP4?rlkey=is6ksbezod2mqknxhgzpn5dm7")
     
     # Si vas a desplegar en Streamlit Cloud, reemplaza esta línea por:
     # st.video("https://dl.dropboxusercontent.com/s/abc123xyz/mi_video.mp4")
