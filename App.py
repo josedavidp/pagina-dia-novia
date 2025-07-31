@@ -6,7 +6,7 @@ import random
 st.set_page_config(page_title="Feliz Día, Amor ❤️", layout="centered")
 
 # --- Botón para activar música ---
-if st.button("▶️ Reproducir canción de fondo"):
+if st.button("▶️ Tócame para escuchar"):
     st.markdown("""
     <audio id="bg-music" autoplay loop>
       <source src="https://dl.dropboxusercontent.com/scl/fi/8lglshdnyxx60f1buxsh1/Coldplay-Yellow.mp3?rlkey=s1l0yk5vw7x7r77wj3icdp8eh" type="audio/mp3">
