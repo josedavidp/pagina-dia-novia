@@ -121,6 +121,17 @@ if clave.lower() == "ratoncita":
     st.success("💖 Este amor que siento por ti no tiene límites. Gracias por existir.")
     st.image("imagenes/Sorpresa.jpg", width=300)
 
+# Nota de voz final
+st.markdown("### 🎙️ Una nota de voz para cerrar...")
+
+if st.button("▶️ Escuchar mi nota de voz"):
+    st.markdown("""
+    <audio controls autoplay>
+      <source src="https://dl.dropboxusercontent.com/scl/fi/jgjit056wzp7lz4y3p3ap/audiiowa.mp3?rlkey=uxwh4v6f2b4kvdyt4pnobkjgo" type="audio/mp3">
+      Tu navegador no soporta audio HTML.
+    </audio>
+    """, unsafe_allow_html=True)
+
 # Footer
 st.markdown("---")
 st.markdown("Hecho con amor por José y dedicado a mi hermosa novia. ❤️")
