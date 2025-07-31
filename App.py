@@ -5,13 +5,18 @@ import random
 # Configuración general
 st.set_page_config(page_title="Feliz Día, Amor ❤️", layout="centered")
 
-# Música de fondo sincronizada con el video (HTML + JS)
-st.markdown("""
-<!-- 🎵 Música de fondo -->
-<audio id="bg-music" autoplay loop>
-  <source src="https://dl.dropboxusercontent.com/scl/fi/8lglshdnyxx60f1buxsh1/Coldplay-Yellow.mp3?rlkey=s1l0yk5vw7x7r77wj3icdp8eh" type="audio/mp3">
-</audio>
-""", unsafe_allow_html=True)
+# --- Botón para activar música ---
+if st.button("▶️ Reproducir canción de fondo"):
+    st.markdown("""
+    <audio id="bg-music" autoplay loop>
+      <source src="https://dl.dropboxusercontent.com/scl/fi/8lglshdnyxx60f1buxsh1/Coldplay-Yellow.mp3?rlkey=s1l0yk5vw7x7r77wj3icdp8eh" type="audio/mp3">
+    </audio>
+    <script>
+      var music = document.getElementById("bg-music");
+      music.volume = 0.2;
+      music.play();
+    </script>
+    """, unsafe_allow_html=True)
 
 # Título y presentación
 st.title("💖 ¡Feliz Día de la Novia! 💖")
@@ -68,7 +73,7 @@ if st.button("Haz clic para ver algo lindo 💌"):
     <div class="hearts">💖 💕 ❤️ 💓 💘</div>
     """, unsafe_allow_html=True)
 
-    # 🎬 Video con control sobre la música
+    # 🎬 Video sincronizado con música
     st.markdown("""
     ### 🎥 Mira este video:
     <video width="400" controls id="video1">
@@ -80,15 +85,17 @@ if st.button("Haz clic para ver algo lindo 💌"):
       const music = document.getElementById("bg-music");
       const video = document.getElementById("video1");
 
-      music.volume = 0.2;  // Volumen bajo
+      if (music) {
+        music.volume = 0.2;
 
-      video.addEventListener('play', function () {
-        music.pause();
-      });
+        video.addEventListener('play', function () {
+          music.pause();
+        });
 
-      video.addEventListener('pause', function () {
-        music.play();
-      });
+        video.addEventListener('pause', function () {
+          music.play();
+        });
+      }
     </script>
     """, unsafe_allow_html=True)
 
